@@ -1,0 +1,14 @@
+<div class="transaction"
+     data-type="transaction"
+     data-account-id={{@transaction.account_id}}
+     data-amount={{@transaction.amount}}
+     data-balance={{@transaction.balance}}>
+     <p>Transferred {{@transaction.amount}}$
+        {{#if this.isWithdrawal}}
+            from
+        {{else}}
+            to
+        {{/if}}
+        account {{@transaction.account_id}}     </p>
+        {{#if @transaction.balance }} <p>The current account balance is {{@transaction.balance}}$</p> {{/if}}
+</div>

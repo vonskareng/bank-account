@@ -1,0 +1,27 @@
+{{page-title "AppFrontend"}}
+
+<div class="container">
+    <div>
+        <h2>Submit new transaction</h2>
+        <form class="input-container">
+            <div class="form-element">
+                <label for="account_id">Account ID:</label>
+                <input data-type="account-id" id="account_id" value={{this.accountId}} {{on "change" this.updateAccountId}} required>
+            </div>
+            <div class="form-element">
+                <label for="amount">Amount:</label>
+                <input data-type="amount" type="number" id="amount" value={{this.amount}} {{on "change" this.updateAmount}} required>
+            </div>
+            <button type="button" data-type="transaction-submit" {{on "click" this.submit}}>Submit</button>
+            {{#if this.validationError}}<p class="error-container">{{this.validationError}}</p>{{/if}}
+        </form>
+    </div>
+
+    <div class="transaction-history">
+        <h2>Transaction History</h2>
+        {{#each this.transactions as |t|}}
+        <Transaction @transaction={{t}} />
+        {{/each}}
+    </div>
+</div>
+{{outlet}}
